@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
-func RegisterRoutes(ds *sql.DB) {
-	http.HandleFunc("/create", CreateHandler(ds))
+func RegisterRoutes(db *sql.DB) {
+	h := NewHandler(db)
+	http.HandleFunc("/create", h.CreateHandler())
 }
